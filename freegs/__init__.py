@@ -46,5 +46,5 @@ from .dump import OutputFile
 from . import plotting
 
 
-__version__ = metadata(__package__)["Version"]
-__author__ = metadata(__package__)["Author"]
+__version__ = "0.7.0"#metadata(__package__)["Version"]
+__author__ = "B. Dudson"#metadata(__package__)["Author"]
