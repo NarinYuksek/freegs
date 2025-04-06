@@ -29,10 +29,15 @@ profiles = freegs.jtor.ConstrainPaxisIp(eq,
 # Specify locations of the X-points
 # to use to constrain coil currents
 
-xpoints = [(0.7, -1.1),   # (R,Z) locations of X-points
-           (0.7, 1.1)]
+#xpoints = [(0.7, -1.1),   # (R,Z) locations of X-points
+#          (0.7, 1.1)]  
 
-isoflux = [(0.7, -1.1, 1.45, 0.0), (0.7, 1.1, 1.45, 0.0)] # (R1,Z1, R2,Z2) pair of locations
+xpoints = [(0.7, -0.4),   # (R,Z) locations of X-points
+          (0.7, 0.4)]
+
+#isoflux = [(0.7, -1.1, 1.45, 0.0), (0.7, 1.1, 1.45, 0.0)] # (R1,Z1, R2,Z2) pair of locations
+
+isoflux = [(0.7, -0.4, 1.0, 0.0), (0.7, 0.4, 1.0, 0.0)] # (R1,Z1, R2,Z2) pair of locations
 
 constrain = freegs.control.constrain(xpoints=xpoints, gamma=1e-12, isoflux=isoflux)
 
