@@ -108,9 +108,10 @@ class constrain(object):
 
         # Constrain the value of psi
         for r, z, psi in self.psivals:
-            p1 = eq.psiRZ(r, z)
+            p1 = eq.psiNRZ(r, z)
             constraint_rhs.append(psi - p1)
-
+            #print('p1={:3.5f}, psi={:3.5f}'.format(p1, psi))
+            
             # Coil responses
             c = tokamak.controlPsi(r, z)
             constraint_matrix.append(c)
