@@ -20,9 +20,9 @@ eq = freegs.Equilibrium(tokamak=tokamak,
 # Plasma profiles
 
 profiles = freegs.jtor.ConstrainPaxisIp(eq,
-                                        3e3, # Plasma pressure on axis [Pascals] #originally 3e3
-                                        -150000, # Plasma current [Amps] #originally 150000
-                                        0.4) # vacuum f = R*Bt #originally 0.4
+                                        3e3, # Plasma pressure on axis [Pascals] 
+                                        -150000, # Plasma current [Amps] 
+                                        0.4) # vacuum f = R*Bt 
 
 R_wall = [1.13600, 1.13600, 0.96790, 0.67070, 0.62400, 0.62400, 0.62400, 0.67240, 0.96790, 1.13600, 1.13600]
 z_wall = [0.00000, 0.54940, 0.75000, 0.75000, 0.70330, 0.00000, -0.70330, -0.75000, -0.75000, -0.54940, 0.00000]
@@ -59,9 +59,9 @@ for i in range (len(theta)):
 #Coil current limits (min_current= -turns*ps_lim, and max_current= turns*ps_lim where N: number of turns, and ps_lim: power supply current limit)
 current_lims= [(-7514, +7514), (-7514, +7514), (-7514, +7514), (-7514, +7514), (-7514, +7514), (-7514, +7514), (-7514, +7514), (-7514, +7514), (-7488, +7488), (-7488, +7488), (-7488, +7488), (-7488, +7488), (-7488, +7488), (-7488, +7488), (-7488, +7488), (-7488, +7488), (-7501, 7501), (-7501, 7501), (-7501, 7501), (-26026, +26026), (-26013, +26013), (-10764, +10764), (-7176, +7176)]
 
-scale_fac= 10.0
+scale_fac= [34, 34, 34, 34, 34, 34, 34, 34, 36, 36, 36, 36, 36, 36, 36, 36, 35, 35, 35, 1, 29, 12, 8]
 for i in range(len(current_lims)):
-    current_lims[i] = (current_lims[i][0]*scale_fac, current_lims[i][1]*scale_fac)
+    current_lims[i] = (current_lims[i][0]*scale_fac[i], current_lims[i][1]*scale_fac[i])
 
 """coils = [
         #             ("A1", Coil(0.422500,0.000000)),
@@ -162,9 +162,9 @@ isoflux = [(xpoints[0][0], xpoints[0][1], outer_mid[0], outer_mid[1]), (xpoints[
 
 #constrain = freegs.control.constrain(xpoints=xpoints, gamma=1e-12, isoflux=isoflux, psivals=psivals)
 
-constrain = freegs.control.constrain(xpoints=xpoints, gamma=1e-12, isoflux=isoflux)
+#constrain = freegs.control.constrain(xpoints=xpoints, gamma=1e-12, isoflux=isoflux)
 
-#constrain = freegs.control.constrain(xpoints=xpoints, gamma=1e-12, isoflux=isoflux, current_lims=current_lims)
+constrain = freegs.control.constrain(xpoints=xpoints, gamma=1e-12, isoflux=isoflux, current_lims=current_lims)
 
 #constrain = freegs.control.constrain(xpoints=xpoints, gamma=1e-12, current_lims=current_lims)
 
